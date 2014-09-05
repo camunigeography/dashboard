@@ -1,0 +1,24 @@
+<?php
+
+# Define the settings
+$settings = array (
+	
+	# Customisation
+	'applicationName' => 'My dashboard',
+	
+	# Services
+	'services' => array (
+		'Some app'			=> '/path/to/application/',
+		'Another app'		=> 'https://www.example.com/path/to/htps/application/',
+		'Another app 2'		=> 'http://www.example.com/path/to/external/application/',
+	),
+	
+	# API credentials
+	'apiUsername' => 'api_username_here',
+);
+
+# Run the application with the specified settings
+require_once ('dashboard.php');
+new dashboard ($settings);
+
+?>

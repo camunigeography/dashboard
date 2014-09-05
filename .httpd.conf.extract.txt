@@ -1,0 +1,22 @@
+# Dashboard Apache directives
+
+# Load using:
+#	# Dashboard
+#	Include /path/to/dashboard/.httpd.conf.extract.txt
+#	Use MacroDashboard /dashboard /path/to/dashboard "/path/to/site/:/path/to/dashboard/:/path/to/php/libraries/"
+
+
+<Macro MacroDashboard $baseUrl $description $includePath>
+	
+	# Include path
+	<LocationMatch $baseUrl>
+		php_value include_path "$includePath"
+	</LocationMatch>
+	
+	# Front controller application support
+	Use MacroFrontControllerApplication "$baseUrl/" "$description"
+	
+	# Application routing
+	
+	
+</Macro>
