@@ -168,8 +168,6 @@ class dashboard extends frontControllerApplication
 			
 			# Register the HTML
 			$this->services[$serviceId]['html'] = $html;
-			
-			$table[$titleHtml] = $html;
 		}
 		
 		# Compile the HTML
