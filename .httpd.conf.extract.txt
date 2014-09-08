@@ -3,7 +3,7 @@
 # Load using:
 #	# Dashboard
 #	Include /path/to/dashboard/.httpd.conf.extract.txt
-#	Use MacroDashboard "My dashboard" /path/to/dashboard "/path/to/site/:/path/to/dashboard/:/path/to/php/libraries/"
+#	Use MacroDashboard /dashboard "My dashboard" "/path/to/site/:/path/to/dashboard/:/path/to/php/libraries/"
 
 
 <Macro MacroDashboard $baseUrl $description $includePath>
