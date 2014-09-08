@@ -20,6 +20,7 @@ class dashboard extends frontControllerApplication
 			'applicationName'	=> 'Dashboard',
 			'services'			=> NULL,		// Must define array of services as array ('Name' => '/path/to/application/', 'Name 2' => 'http://www.example.com/path/to/application/', ...)
 			'apiUsername'		=> NULL,
+			'apiRequestTimeout'	=> 2,
 		);
 		
 		# Return the defaults
@@ -89,7 +90,7 @@ class dashboard extends frontControllerApplication
 	public function home ()
 	{
 		# Create a stream context for the API retrievals
-		$streamContextOptions = array ('http' => array ('timeout' => 2, ), 'https' => array ('timeout' => 2, ));
+		$streamContextOptions = array ('http' => array ('timeout' => $this->settings['apiRequestTimeout'], ), 'https' => array ('timeout' => 2, ));
 		$streamContext = stream_context_create ($streamContextOptions);
 		
 		# Get information from each service and compile its HTML
