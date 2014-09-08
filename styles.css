@@ -3,4 +3,6 @@ table.dashboard td h2 {margin-top: 0;}
 table.dashboard td.key {width: 300px;}
 table.dashboard td.value div.graybox {padding-top: 20px; border: 0; background-color: #eee;}
 table.dashboard td.value a.actions {background-color: #f7f7f7; padding-bottom: 5px;}
+table.dashboard table td.key {width: auto;}
+table.dashboard table a.actions {white-space: nowrap;}
 p.mainlinks {margin-bottom: 1.5em;}
