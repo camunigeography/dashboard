@@ -90,7 +90,10 @@ class dashboard extends frontControllerApplication
 	public function home ()
 	{
 		# Create a stream context for the API retrievals
-		$streamContextOptions = array ('http' => array ('timeout' => $this->settings['apiRequestTimeout'], ), 'https' => array ('timeout' => 2, ));
+		$streamContextOptions = array (
+			'http'  => array ('timeout' => $this->settings['apiRequestTimeout'], ),
+			'https' => array ('timeout' => $this->settings['apiRequestTimeout'], ),
+		);
 		$streamContext = stream_context_create ($streamContextOptions);
 		
 		# Get information from each service and compile its HTML
@@ -106,7 +109,7 @@ class dashboard extends frontControllerApplication
 			// $html .= $service['apiUrl'];
 			
 			# Get the data from this service's API endpoint
-			if (!$json = file_get_contents ($service['apiUrl'], false, $streamContext)) {
+			if (!$json = $this->file_get_contents_curl ($service['apiUrl'], false, $streamContext)) {
 				$html .= "\n<p><em>It was not possible to fetch information from this service (could not connect).</em></p>";
 				$this->services[$serviceId]['html'] = $html;
 				continue;
@@ -191,6 +194,25 @@ class dashboard extends frontControllerApplication
 		
 		# Echo the HTML
 		echo $html;
+	}
+	
+	
+	# CURL-based alternative to file_get_contents; see: http://stackoverflow.com/a/8543512/180733
+	private function file_get_contents_curl ($url)
+	{
+		$ch = curl_init ();
+		
+		curl_setopt ($ch, CURLOPT_AUTOREFERER, TRUE);
+		curl_setopt ($ch, CURLOPT_HEADER, 0);
+		curl_setopt ($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt ($ch, CURLOPT_FOLLOWLOCATION, TRUE);
+		
+		curl_setopt ($ch, CURLOPT_URL, $url);
+		$data = curl_exec ($ch);
+		curl_close ($ch);
+		
+		# Return the data
+		return $data;
 	}
 }
 
