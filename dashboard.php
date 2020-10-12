@@ -107,7 +107,7 @@ class dashboard extends frontControllerApplication
 			
 			# Get the data from this service's API endpoint
 			if (!$json = file_get_contents ($service['apiUrl'], false, $streamContext)) {
-				$html .= "\n<p><em>It was not possible to fetch information from this service (does not exist).</em></p>";
+				$html .= "\n<p><em>It was not possible to fetch information from this service (could not connect).</em></p>";
 				$this->services[$serviceId]['html'] = $html;
 				continue;
 			}
