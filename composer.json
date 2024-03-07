@@ -1,0 +1,14 @@
+{
+    "name": "camunigeography/dashboard",
+    "description": "Dashboard application aggregation system",
+    "type": "project",
+    "license": "GPL-3.0-only",
+    "minimum-stability": "stable",
+    "require": {
+        "libpurecontent/frontcontrollerapplication": "^1.13",
+        "libpurecontent/application": "^1.9"
+    },
+    "autoload": {
+        "files": ["dashboard.php"]
+    }
+}

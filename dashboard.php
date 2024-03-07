@@ -1,7 +1,6 @@
 <?php
 
 # Application aggregator dashboard
-require_once ('frontControllerApplication.php');
 class dashboard extends frontControllerApplication
 {
 	# Function to assign defaults

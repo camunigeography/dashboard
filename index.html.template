@@ -18,7 +18,7 @@ $settings = array (
 );
 
 # Run the application with the specified settings
-require_once ('dashboard.php');
+require_once ('vendor/autoload.php');
 new dashboard ($settings);
 
 ?>
