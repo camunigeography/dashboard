@@ -3,6 +3,11 @@
 # Application aggregator dashboard
 class dashboard extends frontControllerApplication
 {
+	# Class properties
+	private $services;
+	
+	
+	
 	# Function to assign defaults
 	public function defaults ()
 	{
